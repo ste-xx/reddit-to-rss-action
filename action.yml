@@ -1,11 +1,37 @@
-name: 'Your name here'
+name: 'Reddit to RSS action'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+author: 'Stefan Breitenstein'
 inputs:
-  milliseconds: # change this
+  state:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'state as json'
+  feedUrl:
+    required: true
+    description: 'url where the feed can be found'
+  topic:
+    required: true
+    description: 'r/<topic>'
+  time:
+    required: true
+    description: 'time aspect'
+    default: 'week'
+  minScore:
+    required: true
+    description: 'Min score to fetch entry'
+    default: '500'
+  retention:
+    required: true
+    description: 'how long should an entry be retained'
+    default: '10'
+  title:
+    required: true
+    description: 'title for the json feed'
+    default: 'Reddit'
+outputs:
+  state:
+    description: 'State for the action. Needs to be added in the next run'
+  jsonFeed:
+    description: 'created jsonFeed from the previous state and the new fetched data'
 runs:
   using: 'node16'
   main: 'dist/index.js'
