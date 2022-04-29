@@ -10,30 +10,30 @@ Example
 
 ```yaml
 # get the state from the previous run
-  - id: rprogrammingstate
-        run: echo ::set-output name=state::$(cat rprogramming.state.json)
+  - id: previous
+    run: echo ::set-output name=state::$(cat state.json)
 
 
 
   - uses: ste-xx/reddit-to-rss-action@main
     with:
-      state: ${{ steps.rprogrammingstate.outputs.state }}
+      state: ${{ steps.previous.outputs.state }}
       topic: r/programming
-      feedUrl: https://raw.githubusercontent.com/ste-xx/rss-watch/main/rprogramming.json
+      feedUrl: https://raw.githubusercontent.com/ste-xx/rss-watch/main/feed.json
       title: r/programming
-    id: rprogramming
+    id: rss
 
 
 # write feed to file
   - run: | 
-      cat <<EOF > rprogramming.json
-      ${{ steps.rprogramming.outputs.jsonFeed }}
+      cat <<EOF > feed.json
+      ${{ steps.rss.outputs.jsonFeed }}
       EOF
   
 # write state for the next run
   - run: | 
-     cat <<EOF > rprogramming.state.json
-     ${{ steps.rprogramming.outputs.state }}
+     cat <<EOF > state.json
+     ${{ steps.rss.outputs.state }}
      EOF
 ``` 
 
