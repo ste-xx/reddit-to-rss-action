@@ -41,7 +41,8 @@ A running workflow can be found [here](https://github.com/ste-xx/rss-watch)
 
 
 ## Options
-| Name  | Description | Value | Mandatory
-| ------------- | ------------- | ---- | --- | 
-| state  | Hold the state from the previous run. If not set a flickering rss feed could occur, because entries could match the criteria and the next run the criteria is not met.  | [ ]
-| Content Cell  | Content Cell  |
+| Name  | Description | Type | DefaultValue | Mandatory |
+| ----- | ----------- | ---- | ------------ | --------- | 
+| state  | Hold the state from the previous run. If not set a flickering rss feed could occur, because entries could match the criteria and the next run the criteria is not met.  | Stringified Object | '{}' | 
+| feedUrl  | Url where the generated feed is reachable | URL |  | ✅ 
+
