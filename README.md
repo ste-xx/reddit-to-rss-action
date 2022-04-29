@@ -50,3 +50,10 @@ A running workflow can be found [here](https://github.com/ste-xx/rss-watch)
 | feedUrl | Url where the generated feed is reachable. | URL |  | ✅ 
 | state | Hold the state from the previous run. If not set a flickering rss feed could occur, because entries could match the criteria and the next run the criteria is not met.  | Stringified Object | '{}' | 
 | retention | How long an entry will be preserved, even if the criteria is not met. | 'Number' | '10' |
+
+## Output
+| Name     | Description |
+| -------- | ----------- | 
+| state    | State for the action. Needs to be added in the next run |
+| jsonFeed | Created json feed |
+
